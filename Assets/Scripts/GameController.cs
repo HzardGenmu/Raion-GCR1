@@ -8,14 +8,14 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
-    public GameObject timerObject;        // Timer GameObject to be enabled
-    public GameObject ringCounterObject;  // RingCounter GameObject to be enabled
-    public TMP_Text resultText;           // The Text to display win/lose
-    public GameObject resultPanel;        // Panel to show results
-    public Image resultImage;             // Image to be displayed in result
-    public Sprite winImage;               // Win Image
-    public Sprite loseImage;              // Lose Image
-    public Button retryButton;            // Retry button to reload the game on lose
+    public GameObject timerObject;        
+    public GameObject ringCounterObject; 
+    public TMP_Text resultText;           
+    public GameObject resultPanel;        
+    public Image resultImage;             
+    public Sprite winImage;               
+    public Sprite loseImage;             
+    public Button retryButton;            
 
     [SerializeField] private Timer timer;
     [SerializeField] private RingCounter ringCounter;
@@ -38,9 +38,9 @@ public class GameController : MonoBehaviour
         ringCounterObject.SetActive(false);
         resultPanel.SetActive(false);
 
-        // Ensure retry button is initially hidden and not interactive
+       
         retryButton.gameObject.SetActive(false);
-        retryButton.onClick.AddListener(ReloadGame); // Add listener for retry button
+        retryButton.onClick.AddListener(ReloadGame); 
     }
 
     public void StartGame()
@@ -73,23 +73,20 @@ public class GameController : MonoBehaviour
         resultPanel.SetActive(true);
         resultText.text = "You Lose";
         resultImage.sprite = loseImage;
-
-        // Show retry button only on losing
         retryButton.gameObject.SetActive(true);
     }
 
     private void ReloadGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload current scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
     }
 
     public void ObjectiveAchieved()
     {
-        if (!gameFinished)  // Make sure this runs only once
+        if (!gameFinished) 
         {
             gameFinished = true;
 
-            // Trigger the objective completion event
             if (OnObjectiveComplete != null)
             {
                 OnObjectiveComplete.Invoke();
@@ -100,16 +97,16 @@ public class GameController : MonoBehaviour
     }
 
 
-    // Methods for handling the win screen and image
+   
     public void ShowWinText()
     {
         resultText.text = "You Win";
-        resultPanel.SetActive(true); // Ensure the panel shows up when the player wins
+        resultPanel.SetActive(true);
     }
 
     public void ShowWinImage()
     {
         resultImage.sprite = winImage;
-        resultPanel.SetActive(true); // Ensure the panel shows up when the player wins
+        resultPanel.SetActive(true); 
     }
 }

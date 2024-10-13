@@ -25,7 +25,7 @@ public class EventManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Unsubscribe from the event when destroyed
+        // Unsubscribe from the event when destroyed, although not used
         GameController.OnObjectiveComplete -= DisplayWinText;
         GameController.OnObjectiveComplete -= DisplayWinImage;
     }

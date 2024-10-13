@@ -8,7 +8,7 @@ public class FinishPoint : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            GameController.instance.ObjectiveAchieved(); // Trigger the win logic
+            GameController.instance.ObjectiveAchieved(); 
             Debug.Log("Goal Reached");
         }
     }
